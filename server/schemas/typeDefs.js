@@ -9,11 +9,12 @@ const typeDefs = gql`
     reviews: [Review]!
   }
 
-  type Thought {
+  type Review {
     _id: ID
-    thoughtText: String
-    thoughtAuthor: String
+    reviewText: String
+    reviewAuthor: String
     createdAt: String
+    reviewType: String
     comments: [Comment]!
   }
 
@@ -32,18 +33,18 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
-    thoughts(username: String): [Thought]
-    thought(thoughtId: ID!): Thought
+    reviews(username: String): [Review]
+    review(reviewID: ID!): Review
     me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
+    addReview(reviewText: String!): Review
+    addComment(reviewId: ID!, commentText: String!): Review
+    removeReview(reviewId: ID!): Review
+    removeComment(reviewtId: ID!, commentId: ID!): Review
   }
 `;
 
