@@ -19,12 +19,24 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  reviews: [
+  movieReviews: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Review',
+      ref: 'MovieReview',
     },
   ],
+  bookReviews: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'BookReview'
+    },
+  ],
+  gameReviews: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'GameReview'
+    }
+  ]
 });
 
 userSchema.pre('save', async function (next) {

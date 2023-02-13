@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Review } = require('../models');
+const { User, MovieReview, GameReview, BookReview } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -10,12 +10,26 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate('reviews');
     },
-    reviews: async (parent, { username }) => {
+    movieReviews: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return review.find(params).sort({ createdAt: -1 });
+      return MovieReview.find(params).sort({ createdAt: -1 });
     },
-    review: async (parent, { reviewId }) => {
-      return review.findOne({ _id: reviewId });
+    movieReview: async (parent, { movieReviewId }) => {
+      return MovieReview.findOne({ _id: movieReviewId });
+    },
+    gameReviews: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return GameReview.find(params).sort({ createdAt: -1 });
+    },
+    gameReview: async (parent, { gameReviewId }) => {
+      return GameReview.findOne({ _id: gameReviewId })
+    },
+    bookReviews: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return BookReview.find(params).sort({ createdAt: -1 });
+    },
+    bookReview: async (parent, { bookReviewId }) => {
+      return BookReview.findOne({ _id: bookReviewId })
     },
     me: async (parent, args, context) => {
       if (context.user) {
@@ -48,11 +62,13 @@ const resolvers = {
 
       return { token, user };
     },
-    addReview: async (parent, { reviewText }, context) => {
+    addMovieReview: async (parent, { movieReviewText, genre, watchTime }, context) => {
       if (context.user) {
         const review = await Review.create({
-          reviewText,
+          movieReviewText,
           reviewAuthor: context.user.username,
+          genre,
+          watchTime
         });
 
         await User.findOneAndUpdate(
@@ -64,24 +80,7 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addComment: async (parent, { reviewId, commentText }, context) => {
-      if (context.user) {
-        return review.findOneAndUpdate(
-          { _id: reviewId },
-          {
-            $addToSet: {
-              comments: { commentText, commentAuthor: context.user.username },
-            },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removeReview: async (parent, { reviewId }, context) => {
+    removeMovieReview: async (parent, { reviewId }, context) => {
       if (context.user) {
         const review = await review.findOneAndDelete({
           _id: reviewId,
@@ -94,23 +93,6 @@ const resolvers = {
         );
 
         return review;
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removeComment: async (parent, { reviewId, commentId }, context) => {
-      if (context.user) {
-        return review.findOneAndUpdate(
-          { _id: reviewId },
-          {
-            $pull: {
-              comments: {
-                _id: commentId,
-                commentAuthor: context.user.username,
-              },
-            },
-          },
-          { new: true }
-        );
       }
       throw new AuthenticationError('You need to be logged in!');
     },

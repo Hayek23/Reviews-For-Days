@@ -13,6 +13,9 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import SingleReview from './pages/SingleReview';
 import Profile from './pages/Profile';
+import Games from './pages/Games';
+import Movies from './pages/Movies';
+import Books from './pages/Books';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
