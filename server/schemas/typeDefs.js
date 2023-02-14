@@ -24,7 +24,7 @@ const typeDefs = gql`
   type BookReview {
     _id: ID
     bookReviewText: String
-    bookReviewAuthor: String
+    reviewAuthor: String
     createdAt: String
     genre: String!
     readTime: String
@@ -34,7 +34,7 @@ const typeDefs = gql`
   type GameReview {
     _id: ID
     gameReviewText: String
-    gameReviewAuthor: String
+    reviewAuthor: String
     createdAt: String
     genre: String!
     timePlayed: String
@@ -59,9 +59,9 @@ const typeDefs = gql`
     movieReviews(username: String): [MovieReview]
     movieReview(movieReviewID: ID!): MovieReview
     bookReviews(username: String): [BookReview]
-    bookReview(reviewID: ID!): BookReview
+    bookReview(bookReviewID: ID!): BookReview
     gameReviews(username: String): [GameReview]
-    gameReview(reviewID: ID!): GameReview
+    gameReview(gameReviewID: ID!): GameReview
     me: User
   }
 
