@@ -1,14 +1,14 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
-import BookList from '../components/BookList';
-import BookForm from '../components/BookForm';
+import BookReviewList from '../components/BookReviewList';
+import BookReviewForm from '../components/BookReviewForm';
 
-import { QUERY_THOUGHTS } from '../utils/queries';
+import { QUERY_BOOKS } from '../utils/queries';
 
-const Home = () => {
-  const { loading, data } = useQuery(QUERY_THOUGHTS);
-  const thoughts = data?.thoughts || [];
+const Books = () => {
+  const { loading, data } = useQuery(QUERY_BOOKS);
+  const bookReview = data?.bookReview || [];
 
   return (
     <main>
@@ -17,14 +17,14 @@ const Home = () => {
           className="col-12 col-md-10 mb-3 p-3"
           style={{ border: '1px dotted #1a1a1a' }}
         >
-          <ThoughtForm />
+          <BookReviewForm />
         </div>
         <div className="col-12 col-md-8 mb-3">
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <ThoughtList
-              thoughts={thoughts}
+            <BookReviewList
+              bookReview={bookReview}
               title="Some Feed for Thought(s)..."
             />
           )}
@@ -34,4 +34,6 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Books;
+
+export default Books;
