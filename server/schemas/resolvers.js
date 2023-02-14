@@ -157,10 +157,10 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { movieReviews: movieReview._id } }
+          { $pull: { gameReviews: gameReview._id } }
         );
 
-        return movieReview;
+        return gameReview;
       }
       throw new AuthenticationError('You need to be logged in!');
     },

@@ -14,7 +14,7 @@ const typeDefs = gql`
   type MovieReview {
     _id: ID
     MovieReviewText: String
-    MovieReviewAuthor: String
+    reviewAuthor: String
     createdAt: String
     genre: String!
     watchTime: String
