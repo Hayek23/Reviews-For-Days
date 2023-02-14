@@ -2,6 +2,13 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const gameReviewSchema = new Schema({
+  gameTitle: {
+    type: String,
+    required: 'please enter a title',
+    minlength: 1,
+    maxlength: 100,
+    trim: true,
+  },
   gameReviewText: {
     type: String,
     required: 'Review is required!',
