@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Review } = require('../models');
+const { User, MovieReview, GameReview, BookReview } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -10,12 +10,26 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate('reviews');
     },
-    reviews: async (parent, { username }) => {
+    movieReviews: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return review.find(params).sort({ createdAt: -1 });
+      return MovieReview.find(params).sort({ createdAt: -1 });
     },
-    review: async (parent, { reviewId }) => {
-      return review.findOne({ _id: reviewId });
+    movieReview: async (parent, { movieReviewId }) => {
+      return MovieReview.findOne({ _id: movieReviewId });
+    },
+    gameReviews: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return GameReview.find(params).sort({ createdAt: -1 });
+    },
+    gameReview: async (parent, { gameReviewId }) => {
+      return GameReview.findOne({ _id: gameReviewId })
+    },
+    bookReviews: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return BookReview.find(params).sort({ createdAt: -1 });
+    },
+    bookReview: async (parent, { bookReviewId }) => {
+      return BookReview.findOne({ _id: bookReviewId })
     },
     me: async (parent, args, context) => {
       if (context.user) {
@@ -48,69 +62,108 @@ const resolvers = {
 
       return { token, user };
     },
-    addReview: async (parent, { reviewText }, context) => {
+    addMovieReview: async (parent, { movieReviewText, genre, watchTime }, context) => {
       if (context.user) {
-        const review = await Review.create({
-          reviewText,
+        const movieReview = await MovieReview.create({
+          movieTitle,
+          movieReviewText,
+          reviewAuthor: context.user.username,
+          genre,
+          watchTime
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { movieReviews: movieReview._id } }
+        );
+
+        return movieReview;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    addBookReview: async (parent, { bookReviewText, genre, readTime }, context) => {
+      if (context.user) {
+        const bookReview = await BookReview.create({
+          bookTitle,
+          bookReviewText,
+          reviewAuthor: context.user.username,
+          genre,
+          readTime
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { bookReviews: bookReview._id } }
+        );
+
+        return bookReview;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    addGameReview: async (parent, { gameReviewText, genre, timePlayed }, context) => {
+      if (context.user) {
+        const gameReview = await GameReview.create({
+          gameTitle,
+          gameReviewText,
+          reviewAuthor: context.user.username,
+          genre,
+          timePlayed
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { gameReviews: gameReview._id } }
+        );
+
+        return gameReview;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    removeMovieReview: async (parent, { movieReviewId }, context) => {
+      if (context.user) {
+        const movieReview = await movieReview.findOneAndDelete({
+          _id: movieReviewId,
           reviewAuthor: context.user.username,
         });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { reviews: review._id } }
+          { $pull: { movieReviews: movieReview._id } }
         );
 
-        return review;
+        return movieReview;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addComment: async (parent, { reviewId, commentText }, context) => {
+    removeBookReview: async (parent, { bookReviewId }, context) => {
       if (context.user) {
-        return review.findOneAndUpdate(
-          { _id: reviewId },
-          {
-            $addToSet: {
-              comments: { commentText, commentAuthor: context.user.username },
-            },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removeReview: async (parent, { reviewId }, context) => {
-      if (context.user) {
-        const review = await review.findOneAndDelete({
-          _id: reviewId,
+        const bookReview = await bookReview.findOneAndDelete({
+          _id: bookReviewId,
           reviewAuthor: context.user.username,
         });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { reviews: review._id } }
+          { $pull: { bookReviews: bookReview._id } }
         );
 
-        return review;
+        return bookReview;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    removeComment: async (parent, { reviewId, commentId }, context) => {
+    removeGameReview: async (parent, { gameReviewId }, context) => {
       if (context.user) {
-        return review.findOneAndUpdate(
-          { _id: reviewId },
-          {
-            $pull: {
-              comments: {
-                _id: commentId,
-                commentAuthor: context.user.username,
-              },
-            },
-          },
-          { new: true }
+        const gameReview = await gameReview.findOneAndDelete({
+          _id: gameReviewId,
+          reviewAuthor: context.user.username,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { gameReviews: gameReview._id } }
         );
+
+        return gameReview;
       }
       throw new AuthenticationError('You need to be logged in!');
     },

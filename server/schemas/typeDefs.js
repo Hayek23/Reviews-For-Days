@@ -6,15 +6,41 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    reviews: [Review]!
+    movieReviews: [MovieReview]!
+    bookReviews: [BookReview]!
+    gameReviews: [GameReview]!
   }
 
-  type Review {
+  type MovieReview {
     _id: ID
-    reviewText: String
+    movieTitle: String
+    movieReviewText: String
     reviewAuthor: String
     createdAt: String
-    reviewType: String
+    genre: String
+    watchTime: String
+    comments: [Comment]!
+  }
+
+  type BookReview {
+    _id: ID
+    bookTitle: String
+    bookReviewText: String
+    reviewAuthor: String
+    createdAt: String
+    genre: String
+    readTime: String
+    comments: [Comment]!
+  }
+
+  type GameReview {
+    _id: ID
+    gameTitle: String
+    gameReviewText: String
+    reviewAuthor: String
+    createdAt: String
+    genre: String
+    timePlayed: String
     comments: [Comment]!
   }
 
@@ -33,18 +59,24 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
-    reviews(username: String): [Review]
-    review(reviewID: ID!): Review
+    movieReviews(username: String): [MovieReview]
+    movieReview(movieReviewID: ID!): MovieReview
+    bookReviews(username: String): [BookReview]
+    bookReview(bookReviewID: ID!): BookReview
+    gameReviews(username: String): [GameReview]
+    gameReview(gameReviewID: ID!): GameReview
     me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addReview(reviewText: String!): Review
-    addComment(reviewId: ID!, commentText: String!): Review
-    removeReview(reviewId: ID!): Review
-    removeComment(reviewtId: ID!, commentId: ID!): Review
+    addMovieReview(movieReviewText: String!, genre: String!, watchTime: String!): MovieReview
+    addBookReview(bookReviewText: String!, genre: String!, readTime: String!): BookReview
+    addGameReview(gameReviewText: String!, genre: String!, timePlayed: String!): GameReview
+    removeMovieReview(movieReviewId: ID!): MovieReview
+    removeBookReview(bookReviewId: ID!): BookReview
+    removeGameReview(gameReviewId: ID!): GameReview
   }
 `;
 
