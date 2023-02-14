@@ -24,33 +24,44 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_THOUGHT = gql`
-  mutation addThought($thoughtText: String!) {
-    addThought(thoughtText: $thoughtText) {
+export const ADD_MOVIE_REVIEW = gql`
+  mutation addMovieReview($movieReviewText: String!) {
+    addMovieReview(movieReviewText: $movieReviewText) {
       _id
-      thoughtText
-      thoughtAuthor
+      movieTitle
+      movieReviewText
+      reviewAuthor
       createdAt
-      comments {
-        _id
-        commentText
-      }
+      genre
+      watchTime
     }
   }
 `;
 
-export const ADD_COMMENT = gql`
-  mutation addComment($thoughtId: ID!, $commentText: String!) {
-    addComment(thoughtId: $thoughtId, commentText: $commentText) {
+export const ADD_BOOK_REVIEW = gql`
+  mutation addBookReview($bookReviewText: String!) {
+    addBookReview(bookReviewText: $bookReviewText) {
       _id
-      thoughtText
-      thoughtAuthor
+      bookTitle
+      bookReviewText
+      reviewAuthor
       createdAt
-      comments {
-        _id
-        commentText
-        createdAt
-      }
+      genre
+      readTime
+    }
+  }
+`;
+
+export const ADD_GAME_REVIEW = gql`
+  mutation addGameReview($gameReviewText: String!) {
+    addGameReview(gameReviewText: $gameReviewText) {
+      _id
+      gameTitle
+      gameReviewText
+      reviewAuthor
+      createdAt
+      genre
+      timePlayed
     }
   }
 `;
