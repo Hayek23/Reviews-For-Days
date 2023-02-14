@@ -20,7 +20,7 @@ import Auth from '../../utils/auth';
     
             cache.writeQuery({
               query: QUERY_BOOKS,
-              data: { thoughts: [addBookReview, ...bookReview] },
+              data: { bookReview: [addBookReview, ...bookReview] },
             });
           } catch (e) {
             console.error(e);
