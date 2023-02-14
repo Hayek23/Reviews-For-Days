@@ -13,30 +13,33 @@ const typeDefs = gql`
 
   type MovieReview {
     _id: ID
-    MovieReviewText: String
+    movieTitle: String
+    movieReviewText: String
     reviewAuthor: String
     createdAt: String
-    genre: String!
+    genre: String
     watchTime: String
     comments: [Comment]!
   }
 
   type BookReview {
     _id: ID
+    bookTitle: String
     bookReviewText: String
     reviewAuthor: String
     createdAt: String
-    genre: String!
+    genre: String
     readTime: String
     comments: [Comment]!
   }
 
   type GameReview {
     _id: ID
+    gameTitle: String
     gameReviewText: String
     reviewAuthor: String
     createdAt: String
-    genre: String!
+    genre: String
     timePlayed: String
     comments: [Comment]!
   }
