@@ -13,12 +13,12 @@ export const NAV_ITEMS = [
     path: '/Books',
   },
   {
-    itemName: "MOVIES",
+    itemName: "Movies",
     path: '/Movies',
   },
   {
     itemName: "Video Games",
-    path: '/VideoGames',
+    path: '/Games',
   },
 ];
 
