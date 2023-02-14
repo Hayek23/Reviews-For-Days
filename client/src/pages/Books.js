@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_BOOK_REVIEW } from '../../utils/mutations';
-import { QUERY_BOOKS, QUERY_ME } from '../../utils/queries';
+import { ADD_BOOK_REVIEW } from '../utils/mutations';
+import { QUERY_BOOKS, QUERY_ME } from '../utils/queries';
 
-import Auth from '../../utils/auth';
+import Auth from '../utils/auth';
 
     
     const BookReview = () => {
@@ -115,7 +115,7 @@ import Auth from '../../utils/auth';
     };
     
     
-    export default Books;
+    export default BookReview;
 
 
 

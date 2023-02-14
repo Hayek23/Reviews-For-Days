@@ -7,18 +7,18 @@ import { useQuery } from '@apollo/client';
 import ReviewList from '../components/ReviewList';
 import ReviewForm from '../components/ReviewForm';
 
-import { QUERY_SINGLE_THOUGHT } from '../utils/queries';
+import { QUERY_SINGLE_BOOK } from '../utils/queries';
 
 const SingleReview = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
-  const { thoughtId } = useParams();
+  const { bookReviewId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_SINGLE_THOUGHT, {
+  const { loading, data } = useQuery(QUERY_SINGLE_BOOK, {
     // pass URL parameter
-    variables: { thoughtId: thoughtId },
+    variables: { bookReviewId: bookReviewId },
   });
 
-  const thought = data?.thought || {};
+  const bookReview = data?.bookReview || {};
 
   if (loading) {
     return <div>Loading...</div>;
@@ -26,9 +26,9 @@ const SingleReview = () => {
   return (
     <div className="my-3">
       <h3 className="card-header bg-dark text-light p-2 m-0">
-        {thought.thoughtAuthor} <br />
+        {bookReview.reviewAuthor} <br />
         <span style={{ fontSize: '1rem' }}>
-          had this thought on {thought.createdAt}
+          had this thought on {bookReview.createdAt}
         </span>
       </h3>
       <div className="bg-light py-4">
@@ -41,15 +41,15 @@ const SingleReview = () => {
             lineHeight: '1.5',
           }}
         >
-          {thought.thoughtText}
+          {bookReview.bookReviewText}
         </blockquote>
       </div>
 
       <div className="my-5">
-        <ReviewList comments={thought.comments} />
+        <ReviewList comments={bookReview.comments} />
       </div>
       <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <ReviewForm thoughtId={thought._id} />
+        <ReviewForm bookReviewId={bookReview._id} />
       </div>
     </div>
   );
