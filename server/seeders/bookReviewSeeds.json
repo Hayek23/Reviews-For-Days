@@ -1,9 +1,9 @@
 [
     {
-        "bookTitle": "Harry Potter and the Sorcerer's Stone",
-        "bookReviewText": "It's a good book!",
+        "title": "Harry Potter and the Sorcerer's Stone",
+        "reviewText": "It's a good book!",
         "genre": "Fiction",
-        "readTime": "20hrs",
+        "time": "20hrs",
         "reviewAuthor": "Brian Kernighan"
     }
 ]

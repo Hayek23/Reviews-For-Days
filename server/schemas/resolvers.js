@@ -62,14 +62,14 @@ const resolvers = {
 
       return { token, user };
     },
-    addMovieReview: async (parent, { movieReviewText, genre, watchTime }, context) => {
+    addMovieReview: async (parent, { reviewText, genre, time }, context) => {
       if (context.user) {
         const movieReview = await MovieReview.create({
-          movieTitle,
-          movieReviewText,
+          title,
+          reviewText,
           reviewAuthor: context.user.username,
           genre,
-          watchTime
+          time
         });
 
         await User.findOneAndUpdate(
@@ -81,14 +81,14 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addBookReview: async (parent, { bookReviewText, genre, readTime }, context) => {
+    addBookReview: async (parent, { reviewText, genre, time }, context) => {
       if (context.user) {
         const bookReview = await BookReview.create({
-          bookTitle,
-          bookReviewText,
+          title,
+          reviewText,
           reviewAuthor: context.user.username,
           genre,
-          readTime
+          time
         });
 
         await User.findOneAndUpdate(
@@ -100,14 +100,14 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addGameReview: async (parent, { gameReviewText, genre, timePlayed }, context) => {
+    addGameReview: async (parent, { reviewText, genre, time }, context) => {
       if (context.user) {
         const gameReview = await GameReview.create({
-          gameTitle,
-          gameReviewText,
+          title,
+          reviewText,
           reviewAuthor: context.user.username,
           genre,
-          timePlayed
+          time
         });
 
         await User.findOneAndUpdate(

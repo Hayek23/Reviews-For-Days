@@ -8,30 +8,30 @@ export const QUERY_USER = gql`
       email
       movieReviews {
         _id
-        movieTitle
-        movieReviewText
+        title
+        reviewText
         reviewAuthor
         createdAt
         genre
-        watchTime
+        time
       }
       gameReviews {
         _id
-        gameTitle
-        gameReviewText
+        title
+        reviewText
         reviewAuthor
         createdAt
         genre
-        timePlayed
+        time
       }
       bookReviews {
         _id
-        bookTitle
-        bookReviewText
+        title
+        reviewText
         reviewAuthor
         createdAt
         genre
-        readTime
+        time
       }
     }
   }
@@ -41,12 +41,12 @@ export const QUERY_MOVIES = gql`
   query getMovieReviews {
     movieReviews {
       _id
-      movieTitle
-      movieReviewText
+      title
+      reviewText
       reviewAuthor
       createdAt
       genre
-      watchTime
+      time
     }
   }
 `;
@@ -54,12 +54,12 @@ export const QUERY_BOOKS = gql`
   query getBookReviews {
     bookReviews {
       _id
-      bookTitle
-      bookReviewText
+      title
+      reviewText
       reviewAuthor
       createdAt
       genre
-      readTime
+      time
     }
   }
 `;
@@ -67,12 +67,12 @@ export const QUERY_GAMES = gql`
   query getGameReviews {
     gameReviews {
       _id
-      gameTitle
-      gameReviewText
+      title
+      reviewText
       reviewAuthor
       createdAt
       genre
-      timePlayed
+      time
     }
   }
 `;
@@ -81,11 +81,11 @@ export const QUERY_SINGLE_MOVIE = gql`
   query getSingleMovieReview($movieReviewId: ID!) {
     movieReview(movieReviewId: $movieReviewId) {
       _id
-      movieReviewText
+      reviewText
       reviewAuthor
       createdAt
       genre
-      watchTime
+      time
     }
   }
 `;
@@ -94,11 +94,11 @@ export const QUERY_SINGLE_BOOK = gql`
   query getSingleBookReview($bookReviewId: ID!) {
     bookReview(bookReviewId: $bookReviewId) {
       _id
-      bookReviewText
+      reviewText
       reviewAuthor
       createdAt
       genre
-      readTime
+      time
     }
   }
 `;
@@ -107,11 +107,11 @@ export const QUERY_SINGLE_GAME = gql`
   query getSingleGameReview($gameReviewId: ID!) {
     gameReview(gameReviewId: $gameReviewId) {
       _id
-      gameReviewText
+      reviewText
       reviewAuthor
       createdAt
       genre
-      timePlayed
+      time
     }
   }
 `;

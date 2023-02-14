@@ -9,10 +9,10 @@ import Auth from '../../utils/auth';
 
     
     const BookReviewForm = () => {
-      const [bookTitle, setBookTitle] = useState('');
-      const [readTime, setReadTime] = useState('');
+      const [title, setTitle] = useState('');
+      const [time, setTime] = useState('');
       const [genre, setGenre] = useState('');
-      const [bookReviewText, setBookReviewText] = useState('');
+      const [reviewText, setReviewText] = useState('');
     
       const [characterCount, setCharacterCount] = useState(0);
     
@@ -44,15 +44,15 @@ import Auth from '../../utils/auth';
         try {
           const { data } = await addBookReview({
             variables: {
-              bookTitle,
+              title,
               genre,
-              readTime,
-              bookReviewText,
+              time,
+              reviewText,
               reviewAuthor: Auth.getProfile().data.username,
             },
           });
-          setBookTitle('');
-          setBookReviewText('');
+          setTitle('');
+          setReviewText('');
         } catch (err) {
           console.error(err);
         }
@@ -61,18 +61,18 @@ import Auth from '../../utils/auth';
       const handleChange = (event) => {
         const { name, value } = event.target;
     
-        if (name === 'bookReviewText' && value.length <= 500) {
-          setBookReviewText(value);
+        if (name === 'reviewText' && value.length <= 500) {
+          setReviewText(value);
           setCharacterCount(value.length);
         }
-        if (name === 'bookTitle') {
-          setBookTitle(value);
+        if (name === 'title') {
+          setTitle(value);
         }
         if (name === 'genre') {
           setGenre(value);
         }
-        if (name === 'readTime') {
-          setReadTime(value)
+        if (name === 'time') {
+          setTime(value)
         }
       };
     
@@ -95,16 +95,16 @@ import Auth from '../../utils/auth';
               >
                 <div className="col-12 col-lg-9">
                 <textarea
-                    name="bookTitle"
+                    name="title"
                     placeholder="Book Title"
-                    value={readTime}
+                    value={time}
                     style={{ lineHeight: '1.5', resize: 'vertical' }}
                     onChange={handleChange}
                   ></textarea>
                   <textarea
-                    name="bookReviewText"
+                    name="reviewText"
                     placeholder="Here's a new review..."
-                    value={bookReviewText}
+                    value={reviewText}
                     className="form-input w-100"
                     style={{ lineHeight: '1.5', resize: 'vertical' }}
                     onChange={handleChange}
@@ -117,9 +117,9 @@ import Auth from '../../utils/auth';
                     onChange={handleChange}
                   ></textarea>
                   <textarea
-                    name="readTime"
+                    name="time"
                     placeholder="Time spent"
-                    value={readTime}
+                    value={time}
                     style={{ lineHeight: '1.5', resize: 'vertical' }}
                     onChange={handleChange}
                   ></textarea>
