@@ -13,42 +13,32 @@ const typeDefs = gql`
 
   type MovieReview {
     _id: ID
-    movieTitle: String
-    movieReviewText: String
+    title: String
+    reviewText: String
     reviewAuthor: String
     createdAt: String
     genre: String
-    watchTime: String
-    comments: [Comment]!
+    time: String
   }
 
   type BookReview {
     _id: ID
-    bookTitle: String
-    bookReviewText: String
+    title: String
+    reviewText: String
     reviewAuthor: String
     createdAt: String
     genre: String
-    readTime: String
-    comments: [Comment]!
+    time: String
   }
 
   type GameReview {
     _id: ID
-    gameTitle: String
-    gameReviewText: String
+    title: String
+    reviewText: String
     reviewAuthor: String
     createdAt: String
     genre: String
-    timePlayed: String
-    comments: [Comment]!
-  }
-
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
+    time: String
   }
 
   type Auth {
@@ -71,9 +61,9 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addMovieReview(movieReviewText: String!, genre: String!, watchTime: String!): MovieReview
-    addBookReview(bookReviewText: String!, genre: String!, readTime: String!): BookReview
-    addGameReview(gameReviewText: String!, genre: String!, timePlayed: String!): GameReview
+    addMovieReview(reviewText: String!, genre: String!, time: String!): MovieReview
+    addBookReview(reviewText: String!, genre: String!, time: String!): BookReview
+    addGameReview(reviewText: String!, genre: String!, time: String!): GameReview
     removeMovieReview(movieReviewId: ID!): MovieReview
     removeBookReview(bookReviewId: ID!): BookReview
     removeGameReview(gameReviewId: ID!): GameReview
