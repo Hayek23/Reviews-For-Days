@@ -1,8 +1,8 @@
 [
     {
-        "gameTitle": "Mass Effect 3",
-        "gameReviewText": "It's a good game",
-        "timePlayed": "100hrs",
+        "title": "Mass Effect 3",
+        "reviewText": "It's a good game",
+        "time": "100hrs",
         "genre": "Sci-Fi",
         "reviewAuthor": "Brian Kernighan"
     }

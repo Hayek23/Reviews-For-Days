@@ -9,7 +9,10 @@ import Auth from '../../utils/auth';
 
     
     const BookReviewForm = () => {
-      const [bookReviewText, setBookReviewText] = useState('');
+      const [title, setTitle] = useState('');
+      const [time, setTime] = useState('');
+      const [genre, setGenre] = useState('');
+      const [reviewText, setReviewText] = useState('');
     
       const [characterCount, setCharacterCount] = useState(0);
     
@@ -20,7 +23,7 @@ import Auth from '../../utils/auth';
     
             cache.writeQuery({
               query: QUERY_BOOKS,
-              data: { thoughts: [addBookReview, ...bookReview] },
+              data: { bookReviews: [addBookReview, ...bookReview] },
             });
           } catch (e) {
             console.error(e);
@@ -30,7 +33,7 @@ import Auth from '../../utils/auth';
           const { me } = cache.readQuery({ query: QUERY_ME });
           cache.writeQuery({
             query: QUERY_ME,
-            data: { me: { ...me, bookReview: [...me.bookReview, addBookReview] } },
+            data: { me: { ...me, bookReviews: [...me.bookReview, addBookReview] } },
           });
         },
       });
@@ -43,13 +46,13 @@ import Auth from '../../utils/auth';
             variables: {
               title,
               genre,
-              readTime,
-              bookReviewText,
+              time,
+              reviewText,
               reviewAuthor: Auth.getProfile().data.username,
             },
           });
-    
-          setBookReviewText('');
+          setTitle('');
+          setReviewText('');
         } catch (err) {
           console.error(err);
         }
@@ -58,9 +61,18 @@ import Auth from '../../utils/auth';
       const handleChange = (event) => {
         const { name, value } = event.target;
     
-        if (name === 'bookReviewText' && value.length <= 280) {
-          setBookReviewText(value);
+        if (name === 'reviewText' && value.length <= 500) {
+          setReviewText(value);
           setCharacterCount(value.length);
+        }
+        if (name === 'title') {
+          setTitle(value);
+        }
+        if (name === 'genre') {
+          setGenre(value);
+        }
+        if (name === 'time') {
+          setTime(value)
         }
       };
     
@@ -72,21 +84,42 @@ import Auth from '../../utils/auth';
             <>
               <p
                 className={`m-0 ${
-                  characterCount === 280 || error ? 'text-danger' : ''
+                  characterCount === 500 || error ? 'text-danger' : ''
                 }`}
               >
-                Character Count: {characterCount}/280
+                Character Count: {characterCount}/500
               </p>
               <form
                 className="flex-row justify-center justify-space-between-md align-center"
                 onSubmit={handleFormSubmit}
               >
                 <div className="col-12 col-lg-9">
+                <textarea
+                    name="title"
+                    placeholder="Book Title"
+                    value={time}
+                    style={{ lineHeight: '1.5', resize: 'vertical' }}
+                    onChange={handleChange}
+                  ></textarea>
                   <textarea
-                    name="thoughtText"
+                    name="reviewText"
                     placeholder="Here's a new review..."
-                    value={bookReviewText}
+                    value={reviewText}
                     className="form-input w-100"
+                    style={{ lineHeight: '1.5', resize: 'vertical' }}
+                    onChange={handleChange}
+                  ></textarea>
+                  <textarea
+                    name="genre"
+                    placeholder="Genre"
+                    value={genre}
+                    style={{ lineHeight: '1.5', resize: 'vertical' }}
+                    onChange={handleChange}
+                  ></textarea>
+                  <textarea
+                    name="time"
+                    placeholder="Time spent"
+                    value={time}
                     style={{ lineHeight: '1.5', resize: 'vertical' }}
                     onChange={handleChange}
                   ></textarea>

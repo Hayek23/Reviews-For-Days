@@ -4,8 +4,8 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import ReviewList from '../components/ReviewList';
-import ReviewForm from '../components/ReviewForm';
+import BookReviewList from '../components/BookReviewList';
+import BookReviewForm from '../components/BookReviewForm';
 
 import { QUERY_SINGLE_BOOK } from '../utils/queries';
 
@@ -41,15 +41,11 @@ const SingleReview = () => {
             lineHeight: '1.5',
           }}
         >
-          {bookReview.bookReviewText}
+          {bookReview.reviewText}
         </blockquote>
       </div>
-
-      <div className="my-5">
-        <ReviewList comments={bookReview.comments} />
-      </div>
       <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <ReviewForm bookReviewId={bookReview._id} />
+        <BookReviewForm bookReviewId={bookReview._id} />
       </div>
     </div>
   );

@@ -2,14 +2,14 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const gameReviewSchema = new Schema({
-  gameTitle: {
+  title: {
     type: String,
     required: 'please enter a title',
     minlength: 1,
     maxlength: 100,
     trim: true,
   },
-  gameReviewText: {
+  reviewText: {
     type: String,
     required: 'Review is required!',
     minlength: 1,
@@ -26,7 +26,7 @@ const gameReviewSchema = new Schema({
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
-  timePlayed: {
+  time: {
     type: String,
     required: 'time spent on this item is required',
     trim: true

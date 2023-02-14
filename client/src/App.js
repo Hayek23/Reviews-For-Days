@@ -12,7 +12,7 @@ import Home from './pages/Home';
 import Books from './pages/Books';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import SingleReview from './pages/SingleBookReview';
+import SingleBookReview from './pages/SingleBookReview';
 import Profile from './pages/Profile';
 import Games from './pages/Games';
 import Movies from './pages/Movies';
@@ -51,10 +51,10 @@ function App() {
           <Header />
           <div className="container">
             <Routes>
-              <Route 
+               {/* <Route 
                 path="/"
                 element={<Home />}
-              />
+              /> */}
               <Route 
                 path="/Books"
                 element={<Books />}
@@ -64,7 +64,7 @@ function App() {
                 element={<Movies />}
               />
               <Route
-                path="Video Games"
+                path="/VideoGames"
                 element={<Games />}
               />
               <Route 
@@ -85,7 +85,7 @@ function App() {
               />
               <Route 
                 path="/thoughts/:thoughtId"
-                element={<SingleReview />}
+                element={<SingleBookReview />}
               />
             </Routes>
           </div>
