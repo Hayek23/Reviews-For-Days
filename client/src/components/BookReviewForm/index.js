@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_BOOK_REVIEW } from '../../utils/mutations';
-import { QUERY_BOOKS, QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
@@ -16,31 +15,11 @@ import Auth from '../../utils/auth';
     
       const [characterCount, setCharacterCount] = useState(0);
     
-      const [addBookReview, { error }] = useMutation(ADD_BOOK_REVIEW, {
-        update(cache, { data: { addBookReview } }) {
-          try {
-            const { bookReview } = cache.readQuery({ query: QUERY_BOOKS });
-    
-            cache.writeQuery({
-              query: QUERY_BOOKS,
-              data: { bookReviews: [addBookReview, ...bookReview] },
-            });
-          } catch (e) {
-            console.error(e);
-          }
-    
-          // update me object's cache
-          const { me } = cache.readQuery({ query: QUERY_ME });
-          cache.writeQuery({
-            query: QUERY_ME,
-            data: { me: { ...me, bookReviews: [...me.bookReview, addBookReview] } },
-          });
-        },
-      });
+      const [addBookReview, { error }] = useMutation(ADD_BOOK_REVIEW);
     
       const handleFormSubmit = async (event) => {
         event.preventDefault();
-    
+        
         try {
           const { data } = await addBookReview({
             variables: {
@@ -53,11 +32,14 @@ import Auth from '../../utils/auth';
           });
           setTitle('');
           setReviewText('');
+          setTime('');
+          setGenre('');
         } catch (err) {
           console.error(err);
         }
+        
       };
-    
+      
       const handleChange = (event) => {
         const { name, value } = event.target;
     
@@ -75,8 +57,9 @@ import Auth from '../../utils/auth';
           setTime(value)
         }
       };
-    
+      
       return (
+        
         <div>
           <h3>What are your thoughts on this book?</h3>
     
@@ -97,7 +80,7 @@ import Auth from '../../utils/auth';
                 <textarea
                     name="title"
                     placeholder="Book Title"
-                    value={time}
+                    value={title}
                     style={{ lineHeight: '1.5', resize: 'vertical' }}
                     onChange={handleChange}
                   ></textarea>
@@ -144,6 +127,7 @@ import Auth from '../../utils/auth';
             </p>
           )}
         </div>
+        
       );
     };
     

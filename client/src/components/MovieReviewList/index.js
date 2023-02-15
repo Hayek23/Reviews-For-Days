@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+// import React from 'react';
+// import { Link } from 'react-router-dom';
 
 const MovieReviewList = ({
   movieReviews,
@@ -51,4 +51,5 @@ const MovieReviewList = ({
   );
 };
 
-export default MovieReviewList;
+
+// export default MovieReviewList;

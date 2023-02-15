@@ -39,8 +39,8 @@ export const ADD_MOVIE_REVIEW = gql`
 `;
 
 export const ADD_BOOK_REVIEW = gql`
-  mutation addBookReview($reviewText: String!) {
-    addBookReview(reviewText: $reviewText) {
+  mutation addBookReview($reviewText: String!, $title: String!, $genre: String!, $time: String!) {
+    addBookReview(reviewText: $reviewText, title: $title, genre: $genre, time: $time) {
       _id
       title
       reviewText
