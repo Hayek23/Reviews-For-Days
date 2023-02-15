@@ -64,9 +64,9 @@ const typeDefs = gql`
     addMovieReview(reviewText: String!, genre: String!, time: String!): MovieReview
     addBookReview(title: String!, reviewText: String!, genre: String!, time: String!): BookReview
     addGameReview(reviewText: String!, genre: String!, time: String!): GameReview
-    removeMovieReview(movieReviewId: ID!): MovieReview
-    removeBookReview(bookReviewId: ID!): BookReview
-    removeGameReview(gameReviewId: ID!): GameReview
+    removeMovieReview(movieReviewID: ID!): MovieReview
+    removeBookReview(bookReviewID: ID!): BookReview
+    removeGameReview(gameReviewID: ID!): GameReview
   }
 `;
 

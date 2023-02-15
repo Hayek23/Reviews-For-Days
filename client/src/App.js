@@ -64,7 +64,7 @@ function App() {
                 element={<Movies />}
               />
               <Route
-                path="/VideoGames"
+                path="/Games"
                 element={<Games />}
               />
               <Route 

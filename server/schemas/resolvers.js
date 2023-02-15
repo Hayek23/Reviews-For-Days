@@ -14,22 +14,22 @@ const resolvers = {
       const params = username ? { username } : {};
       return MovieReview.find(params).sort({ createdAt: -1 });
     },
-    movieReview: async (parent, { movieReviewId }) => {
-      return MovieReview.findOne({ _id: movieReviewId });
+    movieReview: async (parent, { movieReviewID }) => {
+      return MovieReview.findOne({ _id: movieReviewID });
     },
     gameReviews: async (parent, { username }) => {
       const params = username ? { username } : {};
       return GameReview.find(params).sort({ createdAt: -1 });
     },
-    gameReview: async (parent, { gameReviewId }) => {
-      return GameReview.findOne({ _id: gameReviewId })
+    gameReview: async (parent, { gameReviewID }) => {
+      return GameReview.findOne({ _id: gameReviewID })
     },
     bookReviews: async (parent, { username }) => {
       const params = username ? { username } : {};
       return BookReview.find(params).sort({ createdAt: -1 });
     },
-    bookReview: async (parent, { bookReviewId }) => {
-      return BookReview.findOne({ _id: bookReviewId })
+    bookReview: async (parent, { bookReviewID }) => {
+      return BookReview.findOne({ _id: bookReviewID })
     },
     me: async (parent, args, context) => {
       if (context.user) {

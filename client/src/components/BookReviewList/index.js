@@ -37,7 +37,7 @@ const BookReviewList = ({
               )}
             </h4>
             <div className="card-body bg-light p-2">
-              <p>{bookReview.reviewText}</p>
+              <p>{bookReview.title}</p>
             </div>
             <Link
               className="btn btn-primary btn-block btn-squared"
