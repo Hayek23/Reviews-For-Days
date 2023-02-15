@@ -97,7 +97,7 @@ import Auth from '../../utils/auth';
                 <textarea
                     name="title"
                     placeholder="Book Title"
-                    value={time}
+                    value={title}
                     style={{ lineHeight: '1.5', resize: 'vertical' }}
                     onChange={handleChange}
                   ></textarea>
