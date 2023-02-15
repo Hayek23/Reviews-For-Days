@@ -8,7 +8,7 @@ import { QUERY_MOVIES } from '../utils/queries';
 
 const Movies = () => {
   const { loading, data } = useQuery(QUERY_MOVIES);
-  const movieReview = data?.movieReview || [];
+  const movieReviews = data?.movieReviews || [];
 
   return (
     <main>
@@ -24,7 +24,7 @@ const Movies = () => {
             <div>Loading...</div>
           ) : (
             <MovieReviewList
-              movieReview={movieReview}
+              movieReviews={movieReviews}
               title="Some Feed for Thought(s)..."
             />
           )}

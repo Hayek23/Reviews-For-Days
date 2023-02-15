@@ -8,7 +8,7 @@ import { QUERY_GAMES } from '../utils/queries';
 
 const Games = () => {
   const { loading, data } = useQuery(QUERY_GAMES);
-  const gameReview = data?.gameReview || [];
+  const gameReviews = data?.gameReviews || [];
 
   return (
     <main>
@@ -24,7 +24,7 @@ const Games = () => {
             <div>Loading...</div>
           ) : (
             <GameReviewList
-              gameReview={gameReview}
+              gameReviews={gameReviews}
               title="Some Feed for Thought(s)..."
             />
           )}
