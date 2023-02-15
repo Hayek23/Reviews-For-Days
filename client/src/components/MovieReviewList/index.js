@@ -2,20 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const MovieReviewList = ({
-  reviews,
+  movieReviews,
   title,
   showTitle = true,
   showUsername = true,
 }) => {
-  if (!movieReview.length) {
+  if (!movieReviews.length) {
     return <h3>No Review Yet</h3>;
   }
 
   return (
     <div>
       {showTitle && <h3>{title}</h3>}
-      {reviews &&
-        reviews.map((movieReview) => (
+      {movieReviews &&
+        movieReviews.map((movieReview) => (
           <div key={movieReview._id} className="card mb-3">
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {showUsername ? (
@@ -50,5 +50,6 @@ const MovieReviewList = ({
     </div>
   );
 };
+
 
 export default MovieReviewList;
