@@ -7,7 +7,7 @@ const BookReviewList = ({
   showTitle = true,
   showUsername = true,
 }) => {
-  if (!bookReviews?.length) {
+  if (!bookReviews.length) {
     return <h3>There are no book reviews! Be the first!</h3>;
   }
 
