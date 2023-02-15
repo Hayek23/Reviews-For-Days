@@ -7,7 +7,7 @@ const GameReviewList = ({
   showTitle = true,
   showUsername = true,
 }) => {
-  if (!gameReviews.length) {
+  if (!gameReviews?.length) {
     return <h3>No Review Yet</h3>;
   }
 
