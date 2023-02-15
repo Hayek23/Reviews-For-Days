@@ -4,32 +4,32 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import BookReviewList from '../components/BookReviewList';
-import BookReviewForm from '../components/BookReviewForm';
+import GameReviewList from '../components/BookReviewList';
+import GameReviewForm from '../components/BookReviewForm';
 
-import { QUERY_SINGLE_BOOK } from '../utils/queries';
+import { QUERY_SINGLE_GAME } from '../utils/queries';
 
-const SingleBookReview = () => {
+const SingleGameReview = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
-  const { bookReviewId } = useParams();
+  const { gameReviewId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_SINGLE_BOOK, {
+  const { loading, data } = useQuery(QUERY_SINGLE_GAME, {
     // pass URL parameter
-    variables: { bookReviewID: bookReviewId },
+    variables: { gameReviewID: gameReviewId },
   });
 
-  const bookReview = data?.bookReview || {};
+  const gameReview = data?.gameReview || {};
 
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.log(bookReview)
+  console.log(gameReview)
   return (
     <div className="my-3">
       <h3 className="card-header bg-dark text-light p-2 m-0">
-        {bookReview.reviewAuthor} <br />
+        {gameReview.reviewAuthor} <br />
         <span style={{ fontSize: '1rem' }}>
-          had this thought on {bookReview.createdAt}
+          had this thought on {gameReview.createdAt}
         </span>
       </h3>
       <div className="bg-light py-4">
@@ -42,14 +42,14 @@ const SingleBookReview = () => {
             lineHeight: '1.5',
           }}
         >
-          {bookReview.reviewText}
+          {gameReview.reviewText}
         </blockquote>
       </div>
       <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <BookReviewForm bookReviewId={bookReview._id} />
+        <GameReviewForm gameReviewId={gameReview._id} />
       </div>
     </div>
   );
 };
 
-export default SingleBookReview;
+export default SingleGameReview;

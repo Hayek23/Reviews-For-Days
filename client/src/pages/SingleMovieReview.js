@@ -4,32 +4,32 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import BookReviewList from '../components/BookReviewList';
-import BookReviewForm from '../components/BookReviewForm';
+import MovieReviewList from '../components/BookReviewList';
+import MovieReviewForm from '../components/BookReviewForm';
 
-import { QUERY_SINGLE_BOOK } from '../utils/queries';
+import { QUERY_SINGLE_MOVIE } from '../utils/queries';
 
-const SingleBookReview = () => {
+const SingleMovieReview = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
-  const { bookReviewId } = useParams();
+  const { movieReviewId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_SINGLE_BOOK, {
+  const { loading, data } = useQuery(QUERY_SINGLE_MOVIE, {
     // pass URL parameter
-    variables: { bookReviewID: bookReviewId },
+    variables: { movieReviewID: movieReviewId },
   });
 
-  const bookReview = data?.bookReview || {};
+  const movieReview = data?.movieReview || {};
 
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.log(bookReview)
+  console.log(movieReview)
   return (
     <div className="my-3">
       <h3 className="card-header bg-dark text-light p-2 m-0">
-        {bookReview.reviewAuthor} <br />
+        {movieReview.reviewAuthor} <br />
         <span style={{ fontSize: '1rem' }}>
-          had this thought on {bookReview.createdAt}
+          had this thought on {movieReview.createdAt}
         </span>
       </h3>
       <div className="bg-light py-4">
@@ -42,14 +42,14 @@ const SingleBookReview = () => {
             lineHeight: '1.5',
           }}
         >
-          {bookReview.reviewText}
+          {movieReview.reviewText}
         </blockquote>
       </div>
       <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <BookReviewForm bookReviewId={bookReview._id} />
+        <MovieReviewForm movieReviewId={movieReview._id} />
       </div>
     </div>
   );
 };
 
-export default SingleBookReview;
+export default SingleMovieReview;
