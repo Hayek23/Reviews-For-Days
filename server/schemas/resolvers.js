@@ -62,7 +62,7 @@ const resolvers = {
 
       return { token, user };
     },
-    addMovieReview: async (parent, { reviewText, genre, time }, context) => {
+    addMovieReview: async (parent, { title, reviewText, genre, time }, context) => {
       if (context.user) {
         const movieReview = await MovieReview.create({
           title,
@@ -81,7 +81,7 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addBookReview: async (parent, { reviewText, genre, time }, context) => {
+    addBookReview: async (parent, { title, reviewText, genre, time }, context) => {
       if (context.user) {
         const bookReview = await BookReview.create({
           title,
@@ -100,7 +100,7 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addGameReview: async (parent, { reviewText, genre, time }, context) => {
+    addGameReview: async (parent, { title, reviewText, genre, time }, context) => {
       if (context.user) {
         const gameReview = await GameReview.create({
           title,
