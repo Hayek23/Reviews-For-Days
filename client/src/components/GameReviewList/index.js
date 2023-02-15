@@ -2,20 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const GameReviewList = ({
-  reviews,
+  gameReviews,
   title,
   showTitle = true,
   showUsername = true,
 }) => {
-  if (!gameReview.length) {
+  if (!gameReviews.length) {
     return <h3>No Review Yet</h3>;
   }
 
   return (
     <div>
       {showTitle && <h3>{title}</h3>}
-      {reviews &&
-        reviews.map((gameReview) => (
+      {gameReviews &&
+        gameReviews.map((gameReview) => (
           <div key={gameReview._id} className="card mb-3">
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {showUsername ? (
