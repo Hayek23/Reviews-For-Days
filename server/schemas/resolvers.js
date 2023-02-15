@@ -28,8 +28,8 @@ const resolvers = {
       const params = username ? { username } : {};
       return BookReview.find(params).sort({ createdAt: -1 });
     },
-    bookReview: async (parent, { bookReviewId }) => {
-      return BookReview.findOne({ _id: bookReviewId })
+    bookReview: async (parent, { bookReviewID }) => {
+      return BookReview.findOne({ _id: bookReviewID })
     },
     me: async (parent, args, context) => {
       if (context.user) {

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Home from "./Home";
 import Books from "./Books";
 import Movies from "./Movies";
-import VideoGames from "./VideoGames"
+import Games from "./Games"
 
 export default function Navigation() {
   const [currentPage, setCurrentPage] = useState(NAV_ITEMS[0].itemName);
@@ -21,7 +21,7 @@ export default function Navigation() {
     } else if (currentPage === "MOVIES") {
       return <Movies />;
     } else if (currentPage === "VIDEO GAMES") {
-      return <VideoGames />;
+      return <Games />;
     }
 
     for (const navItem of NAV_ITEMS) {

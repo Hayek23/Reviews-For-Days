@@ -91,8 +91,8 @@ export const QUERY_SINGLE_MOVIE = gql`
 `;
 
 export const QUERY_SINGLE_BOOK = gql`
-  query getSingleBookReview($bookReviewId: ID!) {
-    bookReview(bookReviewId: $bookReviewId) {
+  query getSingleBookReview($bookReviewID: ID!) {
+    bookReview(bookReviewID: $bookReviewID) {
       _id
       reviewText
       reviewAuthor

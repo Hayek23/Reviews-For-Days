@@ -9,13 +9,13 @@ import BookReviewForm from '../components/BookReviewForm';
 
 import { QUERY_SINGLE_BOOK } from '../utils/queries';
 
-const SingleReview = () => {
+const SingleBookReview = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { bookReviewId } = useParams();
 
   const { loading, data } = useQuery(QUERY_SINGLE_BOOK, {
     // pass URL parameter
-    variables: { bookReviewId: bookReviewId },
+    variables: { bookReviewID: bookReviewId },
   });
 
   const bookReview = data?.bookReview || {};
@@ -23,6 +23,7 @@ const SingleReview = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+  console.log(bookReview)
   return (
     <div className="my-3">
       <h3 className="card-header bg-dark text-light p-2 m-0">
@@ -51,4 +52,4 @@ const SingleReview = () => {
   );
 };
 
-export default SingleReview;
+export default SingleBookReview;

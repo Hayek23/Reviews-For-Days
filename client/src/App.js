@@ -84,7 +84,7 @@ function App() {
                 element={<Profile />}
               />
               <Route 
-                path="/thoughts/:thoughtId"
+                path="/bookreviews/:bookReviewId"
                 element={<SingleBookReview />}
               />
             </Routes>
