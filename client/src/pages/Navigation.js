@@ -20,7 +20,7 @@ export default function Navigation() {
       return <Books />;
     } else if (currentPage === "MOVIES") {
       return <Movies />;
-    } else if (currentPage === "VIDEO GAMES") {
+    } else if (currentPage === "GAMES") {
       return <Games />;
     }
 

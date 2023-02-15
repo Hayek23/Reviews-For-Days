@@ -78,8 +78,8 @@ export const QUERY_GAMES = gql`
 `;
 
 export const QUERY_SINGLE_MOVIE = gql`
-  query getSingleMovieReview($movieReviewId: ID!) {
-    movieReview(movieReviewId: $movieReviewId) {
+  query getSingleMovieReview($movieReviewID: ID!) {
+    movieReview(movieReviewID: $movieReviewID) {
       _id
       reviewText
       reviewAuthor
@@ -104,8 +104,8 @@ export const QUERY_SINGLE_BOOK = gql`
 `;
 
 export const QUERY_SINGLE_GAME = gql`
-  query getSingleGameReview($gameReviewId: ID!) {
-    gameReview(gameReviewId: $gameReviewId) {
+  query getSingleGameReview($gameReviewID: ID!) {
+    gameReview(gameReviewID: $gameReviewID) {
       _id
       reviewText
       reviewAuthor
