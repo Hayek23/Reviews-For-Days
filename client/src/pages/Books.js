@@ -8,7 +8,7 @@ import { QUERY_BOOKS } from '../utils/queries';
 
 const Books = () => {
   const { loading, data } = useQuery(QUERY_BOOKS);
-  const bookReview = data?.bookReview || [];
+  const bookReviews = data?.bookReviews || [];
 
   return (
     <main>
@@ -24,7 +24,7 @@ const Books = () => {
             <div>Loading...</div>
           ) : (
             <BookReviewList
-              bookReview={bookReview}
+              bookReviews={bookReviews}
               title="Some Feed for Thought(s)..."
             />
           )}
