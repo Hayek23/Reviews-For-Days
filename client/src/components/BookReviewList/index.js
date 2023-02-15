@@ -7,9 +7,9 @@ const BookReviewList = ({
   showTitle = true,
   showUsername = true,
 }) => {
-  if (!bookReviews.length) {
-    return <h3>No Review Yet</h3>;
-  }
+//   if (!bookReviews.length) {
+//     return <h3>There are no book reviews! Be the first!</h3>;
+//   }
 
   return (
     <div>
@@ -25,13 +25,13 @@ const BookReviewList = ({
                 >
                   {bookReview.reviewAuthor} <br />
                   <span style={{ fontSize: '1rem' }}>
-                    had this thought on {bookReview.createdAt}
+                    made this review on {bookReview.createdAt}
                   </span>
                 </Link>
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
-                    You had this thought on {bookReview.createdAt}
+                    You made this review on {bookReview.createdAt}
                   </span>
                 </>
               )}
@@ -41,9 +41,9 @@ const BookReviewList = ({
             </div>
             <Link
               className="btn btn-primary btn-block btn-squared"
-              to={`/bookReview/${bookReview._id}`}
+              to={`/bookReviews/${bookReview._id}`}
             >
-              Join the discussion on this review.
+              Join the discussion on this thought.
             </Link>
           </div>
         ))}
