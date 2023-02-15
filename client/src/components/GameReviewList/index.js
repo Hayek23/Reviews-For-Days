@@ -1,5 +1,5 @@
-  // import React from 'react';
-  // import { Link } from 'react-router-dom';
+  import React from 'react';
+  import { Link } from 'react-router-dom';
 
 const GameReviewList = ({
   gameReviews,
@@ -52,4 +52,4 @@ const GameReviewList = ({
 };
 
 
-  // export default GameReviewList;
+  export default GameReviewList;
