@@ -2,20 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const BookReviewList = ({
-  reviews,
+  bookReviews,
   title,
   showTitle = true,
   showUsername = true,
 }) => {
-  if (!bookReview.length) {
+  if (!bookReviews.length) {
     return <h3>No Review Yet</h3>;
   }
 
   return (
     <div>
       {showTitle && <h3>{title}</h3>}
-      {reviews &&
-        reviews.map((bookReview) => (
+      {bookReviews &&
+        bookReviews.map((bookReview) => (
           <div key={bookReview._id} className="card mb-3">
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {showUsername ? (
