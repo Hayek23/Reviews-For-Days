@@ -61,12 +61,12 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addMovieReview(reviewText: String!, genre: String!, time: String!): MovieReview
+    addMovieReview(title: String!, reviewText: String!, genre: String!, time: String!): MovieReview
     addBookReview(title: String!, reviewText: String!, genre: String!, time: String!): BookReview
-    addGameReview(reviewText: String!, genre: String!, time: String!): GameReview
-    removeMovieReview(movieReviewId: ID!): MovieReview
-    removeBookReview(bookReviewId: ID!): BookReview
-    removeGameReview(gameReviewId: ID!): GameReview
+    addGameReview(title: String!, reviewText: String!, genre: String!, time: String!): GameReview
+    removeMovieReview(movieReviewID: ID!): MovieReview
+    removeBookReview(bookReviewID: ID!): BookReview
+    removeGameReview(gameReviewID: ID!): GameReview
   }
 `;
 

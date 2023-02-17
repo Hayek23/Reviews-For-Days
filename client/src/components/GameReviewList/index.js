@@ -8,7 +8,7 @@ const GameReviewList = ({
   showUsername = true,
 }) => {
   if (!gameReviews?.length) {
-    return <h3>No Review Yet</h3>;
+    return <h3>There are no video game reviews yet! Be the first</h3>;
   }
 
   return (
@@ -25,19 +25,19 @@ const GameReviewList = ({
                 >
                   {gameReview.reviewAuthor} <br />
                   <span style={{ fontSize: '1rem' }}>
-                    had this thought on {gameReview.createdAt}
+                    made this review on {gameReview.createdAt}
                   </span>
                 </Link>
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
-                    You had this thought on {gameReview.createdAt}
+                    You made this review on {gameReview.createdAt}
                   </span>
                 </>
               )}
             </h4>
             <div className="card-body bg-light p-2">
-              <p>{gameReview.reviewText}</p>
+              <p>{gameReview.title}</p>
             </div>
             <Link
               className="btn btn-primary btn-block btn-squared"
