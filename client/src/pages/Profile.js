@@ -2,8 +2,9 @@ import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import BookReviewForm from '../components/BookReviewForm';
 import BookReviewList from '../components/BookReviewList';
+import MovieReviewList from '../components/MovieReviewList';
+import GameReviewList from '../components/GameReviewList';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -44,20 +45,30 @@ const Profile = () => {
 
         <div className="col-12 col-md-10 mb-5">
           <BookReviewList
-            thoughts={user.thoughts}
-            title={`${user.username}'s thoughts...`}
+            bookReviews={user.bookReviews}
+            title={`${user.username}'s review...`}
             showTitle={false}
             showUsername={false}
           />
         </div>
-        {!userParam && (
-          <div
-            className="col-12 col-md-10 mb-3 p-3"
-            style={{ border: '1px dotted #1a1a1a' }}
-          >
-            <BookReviewForm />
-          </div>
-        )}
+
+        <div className="col-12 col-md-10 mb-5">
+          <MovieReviewList
+            movieReviews={user.movieReviews}
+            title={`${user.username}'s review...`}
+            showTitle={false}
+            showUsername={false}
+          />
+        </div>
+
+        <div className="col-12 col-md-10 mb-5">
+          <GameReviewList
+            gameReviews={user.gameReviews}
+            title={`${user.username}'s review...`}
+            showTitle={false}
+            showUsername={false}
+          />
+        </div>
       </div>
     </div>
   );
