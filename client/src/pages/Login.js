@@ -4,6 +4,12 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
+import { Typography } from 'antd';
+
+import Button from '@mui/material/Button';
+import Text from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack'
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -42,9 +48,9 @@ const Login = (props) => {
 
   return (
     <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
+      <div className="card45">
+        <div className="whole-card">
+          <h4 className="card-header45">Login</h4>
           <div className="card-body">
             {data ? (
               <p>
@@ -52,31 +58,34 @@ const Login = (props) => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
+              <Box onSubmit={handleFormSubmit}>
+                <Stack spacing={1}>
+                <Text
+                 name = "email"
+                  id="outlined-basic" 
+                  label="Your Email" 
+                  variant="outlined"
+                  autoComplete="off"
                   value={formState.email}
                   onChange={handleChange}
                 />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
+                <Text
+                name = "password"
+                  id="outlined-basic2" 
+                  label="Password" 
+                  variant="outlined"
+                  autoComplete="off"
                   value={formState.password}
                   onChange={handleChange}
                 />
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
+                <Button 
+                variant="outlined" 
+                className='btn btn-md btn-info m-2'
                 >
                   Submit
-                </button>
-              </form>
+                </Button>
+                </Stack>
+              </Box>
             )}
 
             {error && (

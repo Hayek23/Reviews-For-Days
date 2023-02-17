@@ -7,7 +7,7 @@ const GameReviewList = ({
   showTitle = true,
   showUsername = true,
 }) => {
-  if (!gameReviews?.length) {
+  if (!gameReviews.length) {
     return <h3>There are no video game reviews yet! Be the first</h3>;
   }
 

@@ -193,6 +193,51 @@ button,
   -webkit-appearance: button;
 }
 
+.submit-button{
+  width: 10rem;
+  display: block;
+  background-color: #2d3e50;
+}
+
+.whole-card{
+  border-radius: .6rem;
+  height: 14rem;
+  border: 2px solid #1a1a1a;
+}
+
+.card-header45{
+  border-radius: .4rem;
+  background-color: #2d3e50;
+  height: 3rem;
+  line-height: 2;
+  margin-top: 0;
+  margin-bottom: 3rem;
+  text-align: center;
+  color: white;
+}
+
+#outlined-basic2{
+  padding-left: 5rem;
+  
+}
+
+
+.card45{
+padding: 2rem;
+}
+
+.whole-card2{
+  border-radius: .6rem;
+  height: 18rem;
+  border: 2px solid #1a1a1a;
+}
+
+#outlined-basic3{
+  margin-right: 7rem;
+}
+
+
+
 /**
  * Remove the inner border and padding in Firefox.
  */
@@ -366,7 +411,6 @@ body {
 h1,
 h2,
 h3,
-h4,
 h5,
 h6 {
   font-family: 'JetBrains Mono', monospace;
@@ -1083,10 +1127,7 @@ a:hover {
   background-color: #31a9e1;
 }
 
-.card {
-  border: 1px solid #1a1a1a;
-  margin-bottom: 1rem;
-}
+
 
 .card .card-header {
   padding: 0.375rem;
