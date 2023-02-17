@@ -213,6 +213,7 @@ button,
   margin-top: 0;
   margin-bottom: 3rem;
   text-align: center;
+  color: white;
 }
 
 #outlined-basic2{
@@ -223,6 +224,16 @@ button,
 
 .card45{
 padding: 2rem;
+}
+
+.whole-card2{
+  border-radius: .6rem;
+  height: 18rem;
+  border: 2px solid #1a1a1a;
+}
+
+#outlined-basic3{
+  margin-right: 7rem;
 }
 
 

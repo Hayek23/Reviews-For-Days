@@ -6,6 +6,11 @@ import { ADD_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
+import Button from '@mui/material/Button';
+import Text from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack'
+
 const Signup = () => {
   const [formState, setFormState] = useState({
     username: '',
@@ -40,9 +45,9 @@ const Signup = () => {
 
   return (
     <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
+      <div className="card45">
+        <div className="whole-card2">
+          <h4 className="card-header45">Sign Up</h4>
           <div className="card-body">
             {data ? (
               <p>
@@ -50,39 +55,42 @@ const Signup = () => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your username"
-                  name="username"
-                  type="text"
+              <Box onSubmit={handleFormSubmit}>
+                <Stack spacing={1}>
+                <Text
+                  id='outlined-basic3'
+                  name = "username"
+                  label="Username"
+                  variant='outlined'
                   value={formState.name}
                   onChange={handleChange}
                 />
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
+                <Text
+                  id="oulined-basic4"
+                  name = "email"
+                  label="Email"
+                  variant='outlined'
                   value={formState.email}
                   onChange={handleChange}
                 />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
+                <Text
+                name = "password"
+                   id="outlined-basic5"
+                   label="Password"
+                   variant='outlined'
                   value={formState.password}
                   onChange={handleChange}
                 />
-                <button
-                  className="btn btn-block btn-primary"
+                <Button
+                  variant='outlined'
+                  className="btn btn-md btn-info m-2"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
                   Submit
-                </button>
-              </form>
+                </Button>
+                </Stack>
+              </Box>
             )}
 
             {error && (
