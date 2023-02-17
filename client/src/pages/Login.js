@@ -5,6 +5,7 @@ import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
+
 import Button from '@mui/material/Button';
 import Text from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -57,7 +58,8 @@ const Login = (props) => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <Box>
+              <form onSubmit={handleFormSubmit}>
+              <Box onSubmit={handleFormSubmit}>
                 <Stack spacing={1}>
                 <Text
                   name = "email"
@@ -72,6 +74,7 @@ const Login = (props) => {
                   name = "password"
                   id="outlined-basic2" 
                   label="Password" 
+                  type = "password"
                   variant="outlined"
                   autoComplete="off"
                   value={formState.password}
@@ -86,6 +89,7 @@ const Login = (props) => {
                 </Button>
                 </Stack>
               </Box>
+              </form>
             )}
 
             {error && (
