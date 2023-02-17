@@ -59,6 +59,7 @@ const Signup = () => {
                 <Stack spacing={1}>
                 <Text
                   id='outlined-basic3'
+                  name = "username"
                   label="Username"
                   variant='outlined'
                   value={formState.name}
@@ -66,12 +67,14 @@ const Signup = () => {
                 />
                 <Text
                   id="oulined-basic4"
+                  name = "email"
                   label="Email"
                   variant='outlined'
                   value={formState.email}
                   onChange={handleChange}
                 />
                 <Text
+                name = "password"
                    id="outlined-basic5"
                    label="Password"
                    variant='outlined'
@@ -79,7 +82,7 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <Button
-                variant='outlined'
+                  variant='outlined'
                   className="btn btn-md btn-info m-2"
                   style={{ cursor: 'pointer' }}
                   type="submit"
