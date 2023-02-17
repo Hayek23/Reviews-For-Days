@@ -5,7 +5,6 @@ import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
-
 import Button from '@mui/material/Button';
 import Text from '@mui/material/TextField';
 import Box from '@mui/material/Box';
