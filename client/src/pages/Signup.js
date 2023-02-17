@@ -55,7 +55,8 @@ const Signup = () => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <Box onSubmit={handleFormSubmit}>
+              <form onSubmit={handleFormSubmit}>
+              <Box>
                 <Stack spacing={1}>
                 <Text
                   id='outlined-basic3'
@@ -76,6 +77,7 @@ const Signup = () => {
                 <Text
                 name = "password"
                    id="outlined-basic5"
+                   type = "password"
                    label="Password"
                    variant='outlined'
                   value={formState.password}
@@ -91,6 +93,7 @@ const Signup = () => {
                 </Button>
                 </Stack>
               </Box>
+              </form>
             )}
 
             {error && (

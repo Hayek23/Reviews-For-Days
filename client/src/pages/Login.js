@@ -58,6 +58,7 @@ const Login = (props) => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
+              <form onSubmit={handleFormSubmit}>
               <Box onSubmit={handleFormSubmit}>
                 <Stack spacing={1}>
                 <Text
@@ -73,6 +74,7 @@ const Login = (props) => {
                 name = "password"
                   id="outlined-basic2" 
                   label="Password" 
+                  type = "password"
                   variant="outlined"
                   autoComplete="off"
                   value={formState.password}
@@ -86,6 +88,7 @@ const Login = (props) => {
                 </Button>
                 </Stack>
               </Box>
+              </form>
             )}
 
             {error && (
