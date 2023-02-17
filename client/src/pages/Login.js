@@ -58,12 +58,16 @@ const Login = (props) => {
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
-              <Box onSubmit={handleFormSubmit}>
+              <Box>
                 <Stack spacing={1}>
                 <Text
-                  name = "email"
+
+                name = "email"
+
+
                   id="outlined-basic" 
                   label="Your Email" 
+                  type = "email"
                   variant="outlined"
                   autoComplete="off"
                   value={formState.email}
@@ -82,7 +86,11 @@ const Login = (props) => {
                 <Button 
                 variant="outlined" 
                 className='btn btn-md btn-info m-2'
+
+                type="submit"
+
                 onSubmit={handleFormSubmit}
+
                 >
                   Submit
                 </Button>
