@@ -62,6 +62,7 @@ const Signup = () => {
                   id='outlined-basic3'
                   name = "username"
                   label="Username"
+                  type = "username"
                   variant='outlined'
                   value={formState.name}
                   onChange={handleChange}
@@ -70,6 +71,7 @@ const Signup = () => {
                   id="oulined-basic4"
                   name = "email"
                   label="Email"
+                  type= "email"
                   variant='outlined'
                   value={formState.email}
                   onChange={handleChange}
