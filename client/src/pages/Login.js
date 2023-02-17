@@ -61,6 +61,7 @@ const Login = (props) => {
               <Box onSubmit={handleFormSubmit}>
                 <Stack spacing={1}>
                 <Text
+                 name = "email"
                   id="outlined-basic" 
                   label="Your Email" 
                   variant="outlined"
@@ -69,6 +70,7 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <Text
+                name = "password"
                   id="outlined-basic2" 
                   label="Password" 
                   variant="outlined"
