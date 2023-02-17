@@ -123,5 +123,32 @@ export const QUERY_ME = gql`
       username
       email
     }
+     movieReviews {
+        _id
+        title
+        reviewText
+        reviewAuthor
+        createdAt
+        genre
+        time
+      }
+      gameReviews {
+        _id
+        title
+        reviewText
+        reviewAuthor
+        createdAt
+        genre
+        time
+      }
+      bookReviews {
+        _id
+        title
+        reviewText
+        reviewAuthor
+        createdAt
+        genre
+        time
+      }
   }
 `;
