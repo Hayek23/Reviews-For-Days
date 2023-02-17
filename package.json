@@ -1,7 +1,10 @@
 {
-  "name": "programming-thoughts",
+  "name": "reviews-for-days",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "16.18.0"
+  },
   "main": "server/server.js",
   "scripts": {
     "start": "node server --ignore client",
@@ -16,4 +19,5 @@
   "devDependencies": {
     "concurrently": "^5.1.0"
   }
+  
 }

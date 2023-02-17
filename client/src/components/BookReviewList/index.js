@@ -39,12 +39,15 @@ const BookReviewList = ({
             <div className="card-body bg-light p-2">
               <p>{bookReview.title}</p>
             </div>
-            <Link
-              className="btn btn-primary btn-block btn-squared"
-              to={`/bookReviews/${bookReview._id}`}
-            >
-              Join the discussion on this thought.
-            </Link>
+            <div className="card-body bg-light p-2">
+              <p>{bookReview.reviewText}</p>
+            </div>
+            <div className="card-body bg-light p-2">
+              <p>Genre: {bookReview.genre}</p>
+            </div>
+            <div className="card-body bg-light p-2">
+              <p>Read Time: {bookReview.time}</p>
+            </div>
           </div>
         ))}
     </div>
