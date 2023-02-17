@@ -79,7 +79,7 @@ import Auth from '../../utils/auth';
                 <div className="col-12 col-lg-9">
                 <textarea
                     name="title"
-                    placeholder="Book Title"
+                    placeholder="Game Title"
                     value={title}
                     style={{ lineHeight: '1.5', resize: 'vertical' }}
                     onChange={handleChange}
