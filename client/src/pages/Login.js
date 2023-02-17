@@ -33,7 +33,7 @@ const Login = (props) => {
       const { data } = await login({
         variables: { ...formState },
       });
-
+      console.log(formState.email, formState.password)
       Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
@@ -62,7 +62,10 @@ const Login = (props) => {
               <Box>
                 <Stack spacing={1}>
                 <Text
+
                 name = "email"
+
+
                   id="outlined-basic" 
                   label="Your Email" 
                   type = "email"
@@ -72,7 +75,7 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <Text
-                name = "password"
+                  name = "password"
                   id="outlined-basic2" 
                   label="Password" 
                   type = "password"
@@ -84,7 +87,11 @@ const Login = (props) => {
                 <Button 
                 variant="outlined" 
                 className='btn btn-md btn-info m-2'
+
                 type="submit"
+
+                onSubmit={handleFormSubmit}
+
                 >
                   Submit
                 </Button>

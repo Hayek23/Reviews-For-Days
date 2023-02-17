@@ -28,6 +28,7 @@ const Profile = () => {
   }
 
   if (!user?.username) {
+    console.log(user)
     return (
       <h4>
         You need to be logged in to see this. Use the navigation links above to

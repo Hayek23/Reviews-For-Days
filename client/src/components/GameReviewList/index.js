@@ -39,12 +39,15 @@ const GameReviewList = ({
             <div className="card-body bg-light p-2">
               <p>{gameReview.title}</p>
             </div>
-            <Link
-              className="btn btn-primary btn-block btn-squared"
-              to={`/gameReview/${gameReview._id}`}
-            >
-              Join the discussion on this review.
-            </Link>
+            <div className="card-body bg-light p-2">
+              <p>{gameReview.reviewText}</p>
+            </div>
+            <div className="card-body bg-light p-2">
+              <p>Genre: {gameReview.genre}</p>
+            </div>
+            <div className="card-body bg-light p-2">
+              <p>Time Played: {gameReview.time}</p>
+            </div>
           </div>
         ))}
     </div>
