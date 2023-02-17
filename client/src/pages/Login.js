@@ -4,7 +4,6 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
-// import { Typography } from 'antd';
 
 import Button from '@mui/material/Button';
 import Text from '@mui/material/TextField';
@@ -33,7 +32,7 @@ const Login = (props) => {
       const { data } = await login({
         variables: { ...formState },
       });
-
+      console.log(formState.email, formState.password)
       Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
@@ -58,10 +57,10 @@ const Login = (props) => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <Box onSubmit={handleFormSubmit}>
+              <Box>
                 <Stack spacing={1}>
                 <Text
-                 name = "email"
+                  name = "email"
                   id="outlined-basic" 
                   label="Your Email" 
                   variant="outlined"
@@ -70,7 +69,7 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <Text
-                name = "password"
+                  name = "password"
                   id="outlined-basic2" 
                   label="Password" 
                   variant="outlined"
@@ -81,6 +80,7 @@ const Login = (props) => {
                 <Button 
                 variant="outlined" 
                 className='btn btn-md btn-info m-2'
+                onSubmit={handleFormSubmit}
                 >
                   Submit
                 </Button>

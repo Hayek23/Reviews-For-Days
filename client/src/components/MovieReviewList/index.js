@@ -39,12 +39,15 @@ const MovieReviewList = ({
             <div className="card-body bg-light p-2">
               <p>{movieReview.title}</p>
             </div>
-            <Link
-              className="btn btn-primary btn-block btn-squared"
-              to={`/movieReview/${movieReview._id}`}
-            >
-              Join the discussion on this review.
-            </Link>
+            <div className="card-body bg-light p-2">
+              <p>{movieReview.reviewText}</p>
+            </div>
+            <div className="card-body bg-light p-2">
+              <p>Genre: {movieReview.genre}</p>
+            </div>
+            <div className="card-body bg-light p-2">
+              <p>Movie Length: {movieReview.time}</p>
+            </div>
           </div>
         ))}
     </div>
