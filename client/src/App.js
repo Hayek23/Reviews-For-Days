@@ -51,10 +51,10 @@ function App() {
           <Header />
           <div className="container">
             <Routes>
-               {/* <Route 
+               <Route 
                 path="/"
                 element={<Home />}
-              /> */}
+              />
               <Route 
                 path="/Books"
                 element={<Books />}
