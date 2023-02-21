@@ -37,16 +37,16 @@ const GameReviewList = ({
               )}
             </h4>
             <div className="card-body bg-light p-2">
-              <p>{gameReview.title}</p>
+              <p><strong>{gameReview.title}</strong></p>
             </div>
             <div className="card-body bg-light p-2">
               <p>{gameReview.reviewText}</p>
             </div>
             <div className="card-body bg-light p-2">
-              <p>Genre: {gameReview.genre}</p>
+              <p><strong>Genre:</strong> {gameReview.genre}</p>
             </div>
             <div className="card-body bg-light p-2">
-              <p>Time Played: {gameReview.time}</p>
+              <p><strong>Time Played:</strong> {gameReview.time}</p>
             </div>
           </div>
         ))}
