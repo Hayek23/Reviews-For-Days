@@ -20,10 +20,10 @@ const MovieReviewList = ({
       {movieReviews &&
         movieReviews.map((movieReview) => (
           <div className='content' key={movieReview._id}>
-            <h4 className="card-header bg-primary text-light p-2 m-0">
+            <h4>
               {showUsername ? (
                 <Link
-                  className="text-light"
+
                   to={`/profiles/${movieReview.reviewAuthor}`}
                 >
                   {movieReview.reviewAuthor} <br />
@@ -39,6 +39,7 @@ const MovieReviewList = ({
                 </>
               )}
             </h4>
+            <CardContent>
             <div>
               <p><strong>{movieReview.title}</strong></p>
             </div>
@@ -51,6 +52,7 @@ const MovieReviewList = ({
             <div>
               <p><strong>Movie Length:</strong> {movieReview.time}</p>
             </div>
+            </CardContent>
           </div>
         ))}
     </Card>

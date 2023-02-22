@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+
 const BookReviewList = ({
   bookReviews,
   title,
@@ -12,15 +15,14 @@ const BookReviewList = ({
   }
 
   return (
-    <div>
-      {showTitle && <h3>{title}</h3>}
+    <Card className='card1'>
+      {showTitle && <h3 className='title'>{title}</h3>}
       {bookReviews &&
         bookReviews.map((bookReview) => (
-          <div key={bookReview._id} className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
+          <div  className='content' key={bookReview._id}>
+            <h4>
               {showUsername ? (
                 <Link
-                  className="text-light"
                   to={`/profiles/${bookReview.reviewAuthor}`}
                 >
                   {bookReview.reviewAuthor} <br />
@@ -36,21 +38,23 @@ const BookReviewList = ({
                 </>
               )}
             </h4>
-            <div className="card-body bg-light p-2">
+            <CardContent>
+            <div>
               <p><strong>{bookReview.title}</strong></p>
             </div>
-            <div className="card-body bg-light p-2">
-              <p>{bookReview.reviewText}</p>
+            <div>
+              <p><strong>Review:</strong>{bookReview.reviewText}</p>
             </div>
-            <div className="card-body bg-light p-2">
+            <div>
               <p><strong>Genre:</strong> {bookReview.genre}</p>
             </div>
-            <div className="card-body bg-light p-2">
+            <div>
               <p><strong>Read Time:</strong> {bookReview.time}</p>
             </div>
+            </CardContent>
           </div>
         ))}
-    </div>
+    </Card>
   );
 };
 
