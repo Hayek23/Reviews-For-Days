@@ -444,6 +444,7 @@ h3 {
 
 h4 {
   font-size: 1.5rem;
+
 }
 
 h5 {
@@ -1758,4 +1759,38 @@ label form [type='radio'] {
   .align-content-center-xl {
     align-content: center;
   }
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.box {
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 30px;
+  border: 3px solid #3d8dde;
+}
+
+@media (max-width: 550px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+.box img {
+  max-width: 250px;
+  max-height: 250px;
+  display: block;
+}
+
+footer {
+  justify-content: center;
+}
+
+.thank-you {
+    display: inline-block;
+    margin: 0 auto;
 }
