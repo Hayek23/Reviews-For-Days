@@ -15,7 +15,6 @@ const Movies = () => {
       <div className="flex-row justify-center">
         <div
           className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
         >
           <MovieReviewForm />
         </div>
@@ -25,7 +24,7 @@ const Movies = () => {
           ) : (
             <MovieReviewList
               movieReviews={movieReviews}
-              title="Some Feed for Thought(s)..."
+              title="Movie Reviews!"
             />
           )}
         </div>

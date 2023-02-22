@@ -25,7 +25,7 @@ const Books = () => {
           ) : (
             <BookReviewList
               bookReviews={bookReviews}
-              title="Some Feed for Thought(s)..."
+              title="Book Reviews!"
             />
           )}
         </div>
