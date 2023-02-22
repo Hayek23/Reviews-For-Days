@@ -6,6 +6,11 @@ import { ADD_GAME_REVIEW } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
+import Button from '@mui/material/Button';
+import Text from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack'
+
     
     const GameReviewForm = () => {
       const [title, setTitle] = useState('');
@@ -60,58 +65,48 @@ import Auth from '../../utils/auth';
       
       return (
         
-        <div>
+        <div className = "box1">
           <h3>What are your thoughts on this game?</h3>
     
           {Auth.loggedIn() ? (
             <>
-              <p
-                className={`m-0 ${
-                  characterCount === 500 || error ? 'text-danger' : ''
-                }`}
-              >
-                Character Count: {characterCount}/500
-              </p>
               <form
-                className="flex-row justify-center justify-space-between-md align-center"
                 onSubmit={handleFormSubmit}
               >
-                <div className="col-12 col-lg-9">
-                <textarea
+                <Box>
+                  <Stack spacing={2}>
+                <Text
                     name="title"
                     placeholder="Game Title"
                     value={title}
-                    style={{ lineHeight: '1.5', resize: 'vertical' }}
                     onChange={handleChange}
-                  ></textarea>
-                  <textarea
+                  ></Text>
+                  <Text
+                  className="review1"
                     name="reviewText"
                     placeholder="Here's a new review..."
                     value={reviewText}
-                    className="form-input w-100"
-                    style={{ lineHeight: '1.5', resize: 'vertical' }}
                     onChange={handleChange}
-                  ></textarea>
-                  <textarea
+                  ></Text>
+                  <Text
                     name="genre"
                     placeholder="Genre"
                     value={genre}
-                    style={{ lineHeight: '1.5', resize: 'vertical' }}
                     onChange={handleChange}
-                  ></textarea>
-                  <textarea
+                  ></Text>
+                  <Text
                     name="time"
                     placeholder="Time spent"
                     value={time}
-                    style={{ lineHeight: '1.5', resize: 'vertical' }}
                     onChange={handleChange}
-                  ></textarea>
-                </div>
+                  ></Text>
+                  </Stack>
+                </Box>
     
-                <div className="col-12 col-lg-3">
-                  <button className="btn btn-primary btn-block py-3" type="submit">
+                <div>
+                  <Button sx={{width: 500}} variant="outlined" type="submit">
                     Add review
-                  </button>
+                  </Button>
                 </div>
                 {error && (
                   <div className="col-12 my-3 bg-danger text-white p-3">
