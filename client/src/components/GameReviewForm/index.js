@@ -104,7 +104,7 @@ import Stack from '@mui/material/Stack'
                 </Box>
     
                 <div>
-                  <Button sx={{width: 500}} variant="outlined" type="submit">
+                  <Button sx={{width: 600}} variant="outlined" type="submit">
                     Add review
                   </Button>
                 </div>
